@@ -1,0 +1,7 @@
+torch
+torchvision
+pandas
+scikit-learn
+tensorboard
+pyyaml
+tqdm # Optional, but used for progress bars in trainer/tester

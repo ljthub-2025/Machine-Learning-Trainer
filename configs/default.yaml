@@ -1,0 +1,48 @@
+# --- General ---
+run_name: "default_run" # Used for logging/checkpoint folders
+seed: 42             # Random seed for reproducibility
+device: "cuda"       # "cuda", "mps", or "cpu"
+
+# --- Data ---
+dataset: "mnist"     # Identifier for the dataset (e.g., "mnist", "cifar10", "synthetic_regression", "your_custom_tabular")
+data_path: "./data_cache" # Where to download/store datasets like MNIST
+batch_size: 64
+num_workers: 2       # DataLoader workers
+
+# --- Model ---
+model: "cnn"        # "cnn" or "mlp"
+task: "classification" # "classification" or "regression"
+
+# Model Specific Params (add params needed by your specific models)
+# Example for CNN (used if model: cnn)
+cnn:
+  input_channels: 1  # 1 for MNIST grayscale
+  num_classes: 10    # 10 classes for MNIST
+
+# Example for MLP (used if model: mlp)
+mlp:
+  input_size: 784    # Example: 28*28 for flattened MNIST
+  hidden_sizes: [128, 64]
+  output_size: 10     # 10 for MNIST classification, 1 for regression
+
+# --- Training ---
+epochs: 10
+learning_rate: 0.001
+optimizer: "Adam"    # e.g., "Adam", "SGD"
+criterion: "CrossEntropyLoss" # e.g., "CrossEntropyLoss" for classification, "MSELoss" for regression
+
+# --- Logging ---
+log_dir: "logs"
+log_interval: 10     # Log training metrics every N batches
+
+# --- Checkpointing ---
+checkpoint_dir: "checkpoints"
+save_best_only: True # Only save the checkpoint if validation performance improves
+
+# --- Early Stopping ---
+early_stopping:
+  enabled: True
+  patience: 5
+  mode: "min"        # "min" for loss, "max" for accuracy/other metric
+  metric: "val_loss" # Metric to monitor (must match a key logged during validation)
+  delta: 0.0         # Minimum change to qualify as improvement

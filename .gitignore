@@ -1,0 +1,40 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+.env
+.venv
+
+# IDE and editor folders
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Log and checkpoint directories (created by the script)
+logs/
+checkpoints/
+
+# Data cache directory (created by dataloader if downloading)
+data_cache/
+# Or specific dataset folders if managed differently
+# data/MNIST/
+# data/CIFAR10/
+
+# Secrets / Credentials (if any)
+*.pem
+credentials.json
+firebase_credentials.json
+
+# Python build artifacts
+build/
+dist/
+*.egg-info/
