@@ -130,6 +130,22 @@ def main():
 
     # --- 2. Setup Environment ---
     run_name = config.get('run_name', f"run_{int(time.time())}")
+    
+    required_dirs = ["checkpoints", "logs", "data_cache"]
+    for dir in required_dirs:
+        if not os.path.exists(dir):
+            os.makedirs(dir)
+
+    if run_name in os.listdir(config['checkpoint_dir']):
+        last_run_number = 0
+        for run in os.listdir(config['checkpoint_dir']):
+            if run.startswith(run_name):
+                if run.split('_')[-1].isdigit():
+                    last_run_number = int(run.split('_')[-1])
+                else:
+                    last_run_number = 0
+        run_name = f"{run_name}_{last_run_number + 1}"
+        print(f"Run name {run_name} already exists. Using {run_name} as run name.")
     set_seed(config['seed'])
     device = get_device(config['device'])
 

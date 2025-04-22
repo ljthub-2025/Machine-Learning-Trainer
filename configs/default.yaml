@@ -1,7 +1,7 @@
 # --- General ---
 run_name: "default_run" # Used for logging/checkpoint folders
 seed: 42             # Random seed for reproducibility
-device: "cuda"       # "cuda", "mps", or "cpu"
+device: "mps"       # "cuda", "mps", or "cpu"
 
 # --- Data ---
 dataset: "mnist"     # Identifier for the dataset (e.g., "mnist", "cifar10", "synthetic_regression", "your_custom_tabular")
